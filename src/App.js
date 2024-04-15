@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+/* The following line can be included in a src/App.scss */
+import "bootstrap/dist/css/bootstrap.css";
+import CarList from "./Components/CarList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CarAdd from "./Components/CarAdd";
+import CarUpdate from "./Components/CarUpdate";
+import CarDetail from "./Components/CarDetail";
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CarList />} />
+          <Route path="/Products/CarAdd" element={<CarAdd />} />
+          <Route path="/Products/Edit/:id" element={<CarUpdate />} />
+          <Route path="/Products/Delete/:id" element={<CarDetail />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
